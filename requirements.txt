@@ -1,5 +1,0 @@
-flask==2.2.2
-streamlit==1.41.1
-qrcode[pil]==7.3.1
-requests==2.32.3
-Pillow==9.2.0
