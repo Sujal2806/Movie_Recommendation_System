@@ -1,67 +1,69 @@
 🎬 Movie Recommender System
 
-This is a simple and interactive Movie Recommender System built using Streamlit, TMDB API, and Python. It recommends movies based on similarity and displays their posters using TMDB.
-
-Working link: https://sujal2806-movie-recommendation-system-app-6qsn2s.streamlit.app/
+A content-based Movie Recommender System built using Streamlit and Python. The system recommends movies based on similarity and displays their posters using TMDB API.
 
 🚀 Features
 
-Get top 5 similar movies for any selected title
+- Content-based movie recommendations
+- Get top 5 similar movies for any selected title
+- Fetch movie posters using TMDB API
+- Interactive UI built with Streamlit
+- Pre-computed similarity matrix for fast recommendations
+- Dockerized for easy deployment
 
-Fetch movie posters using TMDB API
+📦 Installation
 
-Interactive UI built with Streamlit
-
-Lightweight and beginner-friendly
-
-Dockerized for easy deployment
-
-📦 Installation (Step by Step)
-
-1. 🧱 Clone the project
-
-git clone https://github.com/sujalgp/movie-recommender.git
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/movie-recommender.git
 cd movie-recommender
+```
 
-2. 🐍 Create and activate virtual environment (optional but recommended)
-
+2. Create and activate virtual environment (optional but recommended)
+```bash
 python -m venv venv
 venv\Scripts\activate  # On Windows
 # OR
 source venv/bin/activate  # On macOS/Linux
+```
 
-3. 📥 Install Python libraries
-
+3. Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
-4. ▶️ Run the app
-
+4. Run the application
+```bash
 streamlit run app.py
+```
 
-Then open your browser and go to:👉 http://localhost:8501
+The application will be available at http://localhost:8501
 
-🐳 Docker Usage (Optional)
+🐳 Docker Deployment
 
-1. 📦 Build the Docker image
+1. Build the Docker image
+```bash
+docker build -t movie-recommender .
+```
 
-docker build -t sujalgp/movie-app .
-
-2. ▶️ Run the Docker container
-
-docker run -p 8501:8501 sujalgp/movie-app
-
-Then visit:👉 http://localhost:8501
+2. Run the container
+```bash
+docker run -p 8501:8501 movie-recommender
+```
 
 🔄 GitHub Actions (CI/CD)
 
-You can add a GitHub Action workflow to automatically build and push your Docker image:
+This project includes GitHub Actions workflow for automated Docker image building and deployment. The workflow automatically builds and pushes the Docker image to Docker Hub when changes are pushed to the main branch.
 
-Create this file:
+To set up GitHub Actions:
 
-.github/workflows/docker-publish.yml
+1. Create the following file: `.github/workflows/docker-publish.yml`
+2. Add your Docker Hub credentials to GitHub repository secrets:
+   - `DOCKER_USERNAME`: Your Docker Hub username
+   - `DOCKER_PASSWORD`: Your Docker Hub access token
 
-And add:
-
+The workflow configuration:
+```yaml
 name: Build and Push Docker image
 
 on:
@@ -90,18 +92,34 @@ jobs:
         with:
           context: .
           push: true
-          tags: sujalgp/movie-app:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/movie-recommender:latest
+```
 
 🔧 Tech Stack
 
-Python
+- Python 3.x
+- Streamlit - Web application framework
+- Pandas - Data manipulation
+- NumPy - Numerical computations
+- Requests - HTTP requests for TMDB API
+- TMDB API - Movie data and posters
+- Docker - Containerization
 
-Streamlit
+📝 Project Structure
 
-Pandas
+- `app.py` - Main application file
+- `movie_list.pkl` - Preprocessed movie dataset
+- `similarity.pkl` - Pre-computed similarity matrix
+- `requirements.txt` - Python dependencies
+- `Dockerfile` - Docker configuration
 
-Requests
+🔑 Environment Variables
 
-TMDB API
+The application uses TMDB API. You'll need to replace the API key in `app.py` with your own:
+```python
+api_key = "your_tmdb_api_key"
+```
 
-Docker
+📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
