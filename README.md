@@ -2,6 +2,8 @@
 
 This is a simple and interactive Movie Recommender System built using Streamlit, TMDB API, and Python. It recommends movies based on similarity and displays their posters using TMDB.
 
+Working link: https://sujal2806-movie-recommendation-system-app-6qsn2s.streamlit.app/
+
 🚀 Features
 
 Get top 5 similar movies for any selected title
